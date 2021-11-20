@@ -76,7 +76,7 @@ The following example inventory file sets up the ansible_user variable only for 
 ## Defining Targets for Command Execution
 - When running ad hoc commands with Ansible, you can target individual hosts, as well as any combination of groups, hosts and subgroups. For instance, this is how you would check connectivity for every host in a group named db:
 
- **$ ansible db -i inventory -m ping**
+   **$ ansible db -i inventory -m ping**
 
 - You can also specify multiple hosts and groups by separating them with colons:
 
@@ -88,4 +88,4 @@ The following example inventory file sets up the ansible_user variable only for 
 
 - In case you’d like to run a command only on servers that are part of both group1 and group2, for instance, you should use & instead. Don’t forget to prefix it with a \ escape character:
 
- **$ ansible group1:\&group2 -i inventory -m ping**
+  **$ ansible group1:\&group2 -i inventory -m ping**
