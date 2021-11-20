@@ -1,5 +1,4 @@
 ## **Ad-hoc Commands**
-=======================
 
 - An Ad-Hoc command is a one-liner ansible command that performs one task on the target host(s)/group(s).
 
