@@ -86,6 +86,6 @@ The following example inventory file sets up the ansible_user variable only for 
 
   **$ ansible group1:\!server2 -i inventory -m ping**
 
-In case you’d like to run a command only on servers that are part of both group1 and group2, for instance, you should use & instead. Don’t forget to prefix it with a \ escape character:
+- In case you’d like to run a command only on servers that are part of both group1 and group2, for instance, you should use & instead. Don’t forget to prefix it with a \ escape character:
 
  **$ ansible group1:\&group2 -i inventory -m ping**
