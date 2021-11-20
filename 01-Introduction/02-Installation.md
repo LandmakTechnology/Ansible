@@ -11,14 +11,16 @@ have python2 or python3 installed on them.
   . Using compile file
 https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html
 
-##**Installing Ansible on Ubuntu**
+## **Installing Ansible on Ubuntu**
+
 $ sudo adduser ansible
 $ echo "ansible ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ansible
 $ sudo su - ansible
 $ sudo apt-add-repository ppa:ansible/ansible
 $ sudo apt install ansible -y
 
-##**Ansible installation on REDHAT EC2**
+## **Ansible installation on REDHAT EC2**
+
 $sudo useradd ansible
 $sudo hostname ansible
 $echo "ansible ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/ansible
