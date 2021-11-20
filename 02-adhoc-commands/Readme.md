@@ -63,15 +63,13 @@ The following example inventory file sets up the ansible_user variable only for 
    [group_a]
    203.0.113.111
    203.0.113.112
-
    [group_b]
    203.0.113.113
-
    [group_a:vars]
    ansible_user=sammy
    ansible_ssh_private_key_file=/home/sammy/.ssh/custom_id
 
-    This example configuration will assign a custom user and SSH key only for connecting to the servers listed in group_a.
+- This example configuration will assign a custom user and SSH key only for connecting to the servers listed in group_a.
 
 ## Defining Targets for Command Execution
 - When running ad hoc commands with Ansible, you can target individual hosts, as well as any combination of groups, hosts and subgroups. For instance, this is how you would check connectivity for every host in a group named db:
