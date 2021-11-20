@@ -1,10 +1,10 @@
 # Terraform Output Values
-output "instance_publicip" {
+output "ansible_publicip" {
   description = "EC2 Instance Public IP"
   value = aws_instance.ubuntu.public_ip
 }
 
-output "instance_publicip" {
+output "rhel_publicip" {
   description = "EC2 Instance Public IP"
   value = aws_instance.rhel.public_ip
 }
