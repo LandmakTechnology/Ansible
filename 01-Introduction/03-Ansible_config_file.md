@@ -13,10 +13,10 @@ c) roles
 and for this there is a priority for this files.
 
 **Locations with priority(starting from top to bottom):**
-      - ANSIBLE_CONFIG environment variable
-      - ./ansible.cfg from the current directory
-      - ~/.ansible.cfg file present in home directory
-      - /etc/ansible/ansible.cfg default ansible.cfg file.
+      - ANSIBLE_CONFIG environment variable \
+      - ./ansible.cfg from the current directory \
+      - ~/.ansible.cfg file present in home directory \
+      - /etc/ansible/ansible.cfg default ansible.cfg file. \
 
 - Ansible will only use the configuration settings from the file
 which is found in this sequence first, it will not look for the settings
