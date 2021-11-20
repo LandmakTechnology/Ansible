@@ -59,15 +59,15 @@ The following example inventory file sets up the ansible_user variable only for 
 
 - In both cases, we have set up custom values only for server1. If you want to use the same settings for multiple servers, you can use a child group for that:
 #
-   ~/ansible/inventory
-   [group_a]
-   203.0.113.111
-   203.0.113.112
-   [group_b]
-   203.0.113.113
-   [group_a:vars]
-   ansible_user=sammy
-   ansible_ssh_private_key_file=/home/sammy/.ssh/custom_id
+    ~/ansible/inventory
+    [group_a]
+    203.0.113.111
+    203.0.113.112
+    [group_b]
+    203.0.113.113
+    [group_a:vars]
+    ansible_user=sammy
+    ansible_ssh_private_key_file=/home/sammy/.ssh/custom_id
 
 - This example configuration will assign a custom user and SSH key only for connecting to the servers listed in group_a.
 
