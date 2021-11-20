@@ -16,7 +16,7 @@ and for this there is a priority for this files.
       - ANSIBLE_CONFIG environment variable \
       - ./ansible.cfg from the current directory \
       - ~/.ansible.cfg file present in home directory \
-      - /etc/ansible/ansible.cfg default ansible.cfg file. 
+      - /etc/ansible/ansible.cfg default ansible.cfg file.
 
 - Ansible will only use the configuration settings from the file
 which is found in this sequence first, it will not look for the settings
@@ -29,8 +29,8 @@ which is chosen for deployment
 first time, you will be prompted to confirm if you want to
 continue making the connection.
 - This feature is by default set to true in the ansible.cfg file
-- Disable this by uncommenting the line in the configuration
-file
+- Disable this by uncommenting the line in the configuration file
+
    or
 
-#   export ANSIBLE_HOST_KEY_CHECKING=false
+ **export ANSIBLE_HOST_KEY_CHECKING=false**
