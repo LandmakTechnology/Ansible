@@ -25,9 +25,11 @@ password for all users.
 
 - Make sure that PasswordAuthentication is enabled to yes in all servers under
 /etc/ssh/sshd_config file.
-- Restart the sshd service
+- Restart the sshd service \
+
  **$ sudo systemctl restart sshd.service**
 - Test connectivity by providing a -k option to be prompted to enter the SSH password.
+
   **$ ansible all -m ping -k**
 
 - By default, Ansible tries to connect to the nodes as a remote user with the same name as your current system user, using its corresponding SSH keypair.
