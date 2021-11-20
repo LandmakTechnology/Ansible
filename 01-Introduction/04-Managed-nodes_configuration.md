@@ -25,7 +25,7 @@ password for all users.
 
 - Make sure that PasswordAuthentication is enabled to yes in all servers under
 /etc/ssh/sshd_config file.
-- Restart the sshd service 
+- Restart the sshd service
 
  **$ sudo systemctl restart sshd.service**
 - Test connectivity by providing a -k option to be prompted to enter the SSH password.
@@ -40,6 +40,30 @@ password for all users.
 
 - If the remote user has a password, use -k option to be prompted to enter the SSH password.
   **$ ansible all -m ping -u sammy -k**
+
+# **Host and group variables**
+- If were run the ping command on all servers, we will get permission denied on the servers that need a password to authenticate.
+- instead of that, we can provide the password in the host file
+- This is at a host level or host level variable.
+#
+    **Host variables**
+    [db]
+    172.31.13.31  ansible_ssh_pass=ansible
+
+- You can also connect using a different user by specifying the user in the hosts file.
+#
+   [db]
+   172.31.13.31  ansible_ssh_user=sammy ansible_ssh_pass=abc123
+
+- Create a file on the managed nodes to see which user its working with.
+   **$ ansible all -m file -a "path=test.txt state=touch"**
+#  
+  **Group variables:**
+  [db:vars]
+  ansible_ssh_user=sammy
+  ansible_ssh_pass=abc123
+
+- Host variables have the highest priorities. If variables are defined at a host level, then those variables will have precedence over variables that are defined at a group level.
 
 ## b) Password-less Authentication (SSH_Keys)
 - Generate ssh-keys using ssh-keygen command from ansible user in the control machine.
