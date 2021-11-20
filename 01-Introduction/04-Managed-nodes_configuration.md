@@ -38,10 +38,10 @@ password for all users.
 
   **$ ansible all -m ping -u sammy**
 
-- If the remote user has a password, use -k option to be prompted to enter the SSH password.
+- If the remote user has a password, use -k option to be prompted to enter the SSH password.\
   **$ ansible all -m ping -u sammy -k**
 
-# **Host and group variables**
+ **Host and group variables**
 - If were run the ping command on all servers, we will get permission denied on the servers that need a password to authenticate.
 - instead of that, we can provide the password in the host file
 - This is at a host level or host level variable.
