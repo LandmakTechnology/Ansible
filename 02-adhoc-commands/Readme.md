@@ -4,9 +4,21 @@
 
 - Unlike playbooks — which consist of collections of tasks that can be reused — ad hoc commands are tasks that you don’t perform frequently, such as restarting a service or retrieving information about the remote systems that Ansible manages.
 
-- This command will only have two parameters,
-        the group / target of a host that you want to perform the task and
+- This command will only have two parameters,\
+        the group / target of a host that you want to perform the task and \
         the Ansible module to run.
+
+ **Modules:**
+  These are small programs that do some work on the server. They are the main building blocks
+  of Ansible and are basically reusable scripts that are used by Ansible Ad-hoc and playbooks.
+  Ansible comes with a number of reusable modules.
+
+  - The basic syntax of an Ad-hoc command is
+
+  **$ ansible [ -i inventory_file ] <server1:server2:Group1:Group2> -m <module> [-a arguments]**
+
+  - To list all available modules:
+    **$ ansible-doc -l**
 
 ## Testing Connection to Ansible Hosts
 The following command will test connectivity between your Ansible control node and all your Ansible hosts. This command uses the current system user and its corresponding SSH key as the remote login, and includes the -m option, which tells Ansible to run the ping module. It also features the -i flag, which tells Ansible to ping the hosts listed in the specified inventory file
