@@ -52,16 +52,16 @@ password for all users.
 
 - You can also connect using a different user by specifying the user in the hosts file.
 #
-   [db]
-   172.31.13.31  ansible_ssh_user=sammy ansible_ssh_pass=abc123
+    [db]
+    172.31.13.31  ansible_ssh_user=sammy ansible_ssh_pass=abc123
 
-- Create a file on the managed nodes to see which user its working with.
+- Create a file on the managed nodes to see which user its working with. \
    **$ ansible all -m file -a "path=test.txt state=touch"**
 #  
-  **Group variables:**
-  [db:vars]
-  ansible_ssh_user=sammy
-  ansible_ssh_pass=abc123
+    **Group variables:**
+    [db:vars]
+    ansible_ssh_user=sammy
+    ansible_ssh_pass=abc123
 
 - Host variables have the highest priorities. If variables are defined at a host level, then those variables will have precedence over variables that are defined at a group level.
 
