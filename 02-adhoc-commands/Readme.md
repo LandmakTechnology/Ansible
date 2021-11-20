@@ -17,16 +17,16 @@ The following command will test connectivity between your Ansible control node a
 - If this is the first time you’re connecting to these servers via SSH, you’ll be asked to confirm the authenticity of the hosts you’re connecting to via Ansible. When prompted, type yes and then hit ENTER to confirm.
 
 You should get output similar to this:
-
-Output
-server1 | SUCCESS => {
-    "changed": false,
-    "ping": "pong"
-}
-server2 | SUCCESS => {
-    "changed": false,
-    "ping": "pong"
-}
+#
+     Output
+     server1 | SUCCESS => {
+       "changed": false,
+        "ping": "pong"
+      }
+     server2 | SUCCESS => {
+       "changed": false,
+        "ping": "pong"
+      }
 
 - Once you get a "pong" reply back from a host, it means the connection is live and you’re ready to run Ansible commands on that server.
 
@@ -66,7 +66,7 @@ The following example inventory file sets up the ansible_user variable only for 
 
     [group_b]
     203.0.113.113
-    
+
     [group_a:vars]
     ansible_user=sammy
     ansible_ssh_private_key_file=/home/sammy/.ssh/custom_id
