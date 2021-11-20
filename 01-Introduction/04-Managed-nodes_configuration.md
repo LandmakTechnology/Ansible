@@ -25,7 +25,7 @@ password for all users.
 
 - Make sure that PasswordAuthentication is enabled to yes in all servers under
 /etc/ssh/sshd_config file.
-- Restart the sshd service \
+- Restart the sshd service 
 
  **$ sudo systemctl restart sshd.service**
 - Test connectivity by providing a -k option to be prompted to enter the SSH password.
@@ -41,7 +41,7 @@ password for all users.
 - If the remote user has a password, use -k option to be prompted to enter the SSH password.
   **$ ansible all -m ping -u sammy -k**
 
-## b) Password-less Authentication(This is with SSHKeys)
+## b) Password-less Authentication (SSH_Keys)
 - Generate ssh-keys using ssh-keygen command from ansible user in the control machine.
 - Copy ssh public key using ssh-copy-id <hostname> from
 /home/ansible/.ssh/ location.
