@@ -49,44 +49,43 @@ The following example inventory file sets up the ansible_user variable only for 
      server1 ansible_host=203.0.113.111 ansible_user=sammy
      server2 ansible_host=203.0.113.112
 
-Ansible will now use sammy as the default remote user when connecting to the server1 server.
+- Ansible will now use sammy as the default remote user when connecting to the server1 server.
 
-To set up a custom SSH key, include the ansible_ssh_private_key_file variable as follows:
+- To set up a custom SSH key, include the ansible_ssh_private_key_file variable as follows:
 #
-~/ansible/inventory
-server1 ansible_host=203.0.113.111 ansible_ssh_private_key_file=/home/sammy/.ssh/custom_id
-server2 ansible_host=203.0.113.112
+    ~/ansible/inventory
+    server1 ansible_host=203.0.113.111 ansible_ssh_private_key_file=/home/sammy/.ssh/custom_id
+    server2 ansible_host=203.0.113.112
 
-In both cases, we have set up custom values only for server1. If you want to use the same settings for multiple servers, you can use a child group for that:
+- In both cases, we have set up custom values only for server1. If you want to use the same settings for multiple servers, you can use a child group for that:
+#
+   ~/ansible/inventory
+   [group_a]
+   203.0.113.111
+   203.0.113.112
 
-~/ansible/inventory
-[group_a]
-203.0.113.111
-203.0.113.112
+   [group_b]
+   203.0.113.113
 
-[group_b]
-203.0.113.113
+   [group_a:vars]
+   ansible_user=sammy
+   ansible_ssh_private_key_file=/home/sammy/.ssh/custom_id
 
-
-[group_a:vars]
-ansible_user=sammy
-ansible_ssh_private_key_file=/home/sammy/.ssh/custom_id
-
-This example configuration will assign a custom user and SSH key only for connecting to the servers listed in group_a.
+    This example configuration will assign a custom user and SSH key only for connecting to the servers listed in group_a.
 
 ## Defining Targets for Command Execution
-When running ad hoc commands with Ansible, you can target individual hosts, as well as any combination of groups, hosts and subgroups. For instance, this is how you would check connectivity for every host in a group named db:
+- When running ad hoc commands with Ansible, you can target individual hosts, as well as any combination of groups, hosts and subgroups. For instance, this is how you would check connectivity for every host in a group named db:
 
-# ansible db -i inventory -m ping
+ **$ ansible db -i inventory -m ping**
 
-You can also specify multiple hosts and groups by separating them with colons:
+- You can also specify multiple hosts and groups by separating them with colons:
 
-# ansible server1:server2:dbservers [-i inventory] -m ping
+  **$ ansible server1:server2:dbservers [-i inventory] -m ping**
 
-To include an exception in a pattern, use an exclamation mark, prefixed by the escape character \, as follows. This command will run on all servers from group1, except server2:
+- To include an exception in a pattern, use an exclamation mark, prefixed by the escape character \, as follows. This command will run on all servers from group1, except server2:
 
-# ansible group1:\!server2 -i inventory -m ping
+  **$ ansible group1:\!server2 -i inventory -m ping**
 
 In case you’d like to run a command only on servers that are part of both group1 and group2, for instance, you should use & instead. Don’t forget to prefix it with a \ escape character:
 
-# ansible group1:\&group2 -i inventory -m ping
+ **$ ansible group1:\&group2 -i inventory -m ping**
