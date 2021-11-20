@@ -1,9 +1,9 @@
-##** Ad-hoc Commands**
+## **Ad-hoc Commands**
 =======================
 
 - An Ad-Hoc command is a one-liner ansible command that performs one task on the target host(s)/group(s).
 
--Unlike playbooks — which consist of collections of tasks that can be reused — ad hoc commands are tasks that you don’t perform frequently, such as restarting a service or retrieving information about the remote systems that Ansible manages.
+- Unlike playbooks — which consist of collections of tasks that can be reused — ad hoc commands are tasks that you don’t perform frequently, such as restarting a service or retrieving information about the remote systems that Ansible manages.
 
 - This command will only have two parameters,
         the group / target of a host that you want to perform the task and
@@ -12,9 +12,9 @@
 ## Testing Connection to Ansible Hosts
 The following command will test connectivity between your Ansible control node and all your Ansible hosts. This command uses the current system user and its corresponding SSH key as the remote login, and includes the -m option, which tells Ansible to run the ping module. It also features the -i flag, which tells Ansible to ping the hosts listed in the specified inventory file
 
-#     ansible all -i inventory -m ping
+  **$ ansible all -i inventory -m ping**
 
-If this is the first time you’re connecting to these servers via SSH, you’ll be asked to confirm the authenticity of the hosts you’re connecting to via Ansible. When prompted, type yes and then hit ENTER to confirm.
+- If this is the first time you’re connecting to these servers via SSH, you’ll be asked to confirm the authenticity of the hosts you’re connecting to via Ansible. When prompted, type yes and then hit ENTER to confirm.
 
 You should get output similar to this:
 
@@ -27,21 +27,21 @@ server2 | SUCCESS => {
     "changed": false,
     "ping": "pong"
 }
-Once you get a "pong" reply back from a host, it means the connection is live and you’re ready to run Ansible commands on that server.
+
+- Once you get a "pong" reply back from a host, it means the connection is live and you’re ready to run Ansible commands on that server.
 
 ## Adjusting Connection Options
 By default, Ansible tries to connect to the nodes as a remote user with the same name as your current system user, using its corresponding SSH keypair.
 
 To connect as a different remote user, append the command with the -u flag and the name of the intended user:
 
-# ansible all -i inventory -m ping -u sammy
+  **$ ansible all -i inventory -m ping -u sammy**
 
-If you’re using a custom SSH key to connect to the remote servers, you can provide it at execution time with the --private-key option:
+- If you’re using a custom SSH key to connect to the remote servers, you can provide it at execution time with the --private-key option:
 
-# ansible all -i inventory -m ping --private-key=~/.ssh/custom_id
+ **$ ansible all -i inventory -m ping --private-key=~/.ssh/custom_id**
 
-
-Once you’re able to connect using the appropriate options, you can adjust your inventory file to automatically set your remote user and private key, in case they are different from the default values assigned by Ansible. Then, you won’t need to provide those parameters in the command line.
+- Once you’re able to connect using the appropriate options, you can adjust your inventory file to automatically set your remote user and private key, in case they are different from the default values assigned by Ansible. Then, you won’t need to provide those parameters in the command line.
 
 The following example inventory file sets up the ansible_user variable only for the server1 server:
 #
