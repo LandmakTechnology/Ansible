@@ -26,7 +26,7 @@
 - Used to copy files from the ansible control node to the remote
 node or copy files from one location to another in the remote
 node. \
- a) From ansible control node to remote node \
+a) From ansible control node to remote node \
   **$ ansible db -m copy -a “src=/source/file/path dest=/dest/location**
 
  b) From one location in remote node to another location in remote node \
