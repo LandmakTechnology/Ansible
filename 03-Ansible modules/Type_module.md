@@ -6,10 +6,14 @@
 -The command module is more secure, because it will not be affected by the user’s environment \
  **$ ansible all -i inventory -a "uptime"**
 
+ **$ ansible db -a "cat /etc/hosts && pwd"**
+
 # **2. Shell Module**
 - Used to execute binary commands
 - It is more superior than the command module
 - Command will be executed being proceeded through a shell. \
+   **$ ansible db -a "cat /etc/hosts && pwd"**
+
    **$ ansible db –m shell –a “cat /etc/passwd”**
 
 # **3. File Module**
@@ -52,6 +56,14 @@ a) From ansible control node to remote node \
 # **7. Service Module**
 - You can use the service module to manage services running on the remote nodes managed by Ansible. This will require extended system privileges, so make sure your remote user has sudo permissions and you include the --become option to use Ansible’s privilege escalation system. Using -K will prompt you to provide the sudo password for the connecting user.
 
-**$ ansible webservers -i inventory -m service -a "name=nginx state=restarted" --become  -K**
+  **$ ansible webservers -i inventory -m service -a "name=nginx state=restarted" --become  -K**
 
-**$ ansible webservers -i inventory -m service -a "name=nginx state=stopped" --become  -K**
+  **$ ansible webservers -i inventory -m service -a "name=nginx state=stopped" --become  -K**
+
+# **8. User Module**
+ - Used to create user accounts. \
+ - Create a password encryption \
+
+ **$ openssl passwd -crypt <desired_password>**
+ 
+ **$ ansible db -m user -a "name=Peter password=wiyiMQbLhCRUY shell=/bin/bash" -b**
