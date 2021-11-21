@@ -1,4 +1,4 @@
-##**Running Ansible Modules**
+## **Running Ansible Modules**
 
 - These are small programs that do some work on the server.
 - They are the main building blocks of Ansible and are basically reusable scripts that are used by Ansible Ad-hoc and playbooks.
@@ -18,7 +18,7 @@
 
  **$ ansible server1 -i inventory -m apt -a "name=git state=present"**
 
-##**Running Bash Commands**
+## **Running Bash Commands**
 - When a module is not provided via the -m option, the command module is used by default to execute the specified command on the remote server(s).
 
 - This allows you to execute virtually any command that you could normally execute via an SSH terminal, as long as the connecting user has sufficient permissions and there aren’t any interactive prompts.
@@ -27,7 +27,7 @@
 
  **$ ansible all -i inventory -a "uptime"**
 
-##**Using Privilege Escalation to Run Commands with sudo**
+## **Using Privilege Escalation to Run Commands with sudo**
 - If the command or module you want to execute on remote hosts requires extended system privileges or a different system user, you’ll need to use Ansible’s privilege escalation module, become. This module is an abstraction for sudo as well as other privilege escalation software supported by Ansible on different operating systems.
 
 - For instance, if you wanted to run a tail command to output the latest log messages from Nginx’s error log on a server named server1 from inventory, you would need to include the --become option as follows:
@@ -49,7 +49,7 @@ To remove a package, include the state argument and set it to absent:.
 
   **$ ansible all -i inventory -m apt -a "name=nginx state=absent" --become  -K**
 
-##**Copying Files**
+## **Copying Files**
 - With the copy module, you can copy files between the control node and the managed nodes, in either direction. The following command copies a local text file to all remote hosts in the specified inventory file:
 
   **$ ansible all -i inventory -m copy -a "src=./file.txt dest=~/myfile.txt"**
@@ -58,7 +58,7 @@ To remove a package, include the state argument and set it to absent:.
 
   **$ ansible all -i inventory -m copy -a "src=~/myfile.txt remote_src=yes dest=./file.txt"**
 
-##**Changing File Permissions**
+## **Changing File Permissions**
 - To modify permissions on files and directories on your remote nodes, you can use the file module.
 
 - The following command will adjust permissions on a file named file.txt located at /var/www on the remote host. It will set the file’s umask to 600, which will enable read and write permissions only for the current file owner. Additionally, it will set the ownership of that file to a user and a group called sammy:
@@ -74,7 +74,7 @@ To remove a package, include the state argument and set it to absent:.
 
   **$ ansible webservers -i inventory -m service -a "name=nginx state=restarted" --become  -K**
 
-##**Restarting Servers** 
+## **Restarting Servers**
 Although Ansible doesn’t have a dedicated module to restart servers, you can issue a bash command that calls the /sbin/reboot command on the remote host.
 
 Restarting the server will require extended system privileges, so make sure your remote user has sudo permissions and you include the --become option to use Ansible’s privilege escalation system. Using -K will prompt you to provide the sudo password for the connecting user.
