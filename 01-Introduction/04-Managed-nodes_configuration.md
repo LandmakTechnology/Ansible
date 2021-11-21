@@ -65,7 +65,7 @@ password for all users.
 
 - Host variables have the highest priorities. If variables are defined at a host level, then those variables will have precedence over variables that are defined at a group level.
 
-## b) Password-less Authentication (SSH_Keys)
+## b) **Password-less Authentication (SSH_Keys)**
 - Generate ssh-keys using ssh-keygen command from ansible user in the control machine.
 - Copy ssh public key using ssh-copy-id <hostname> from
 /home/ansible/.ssh/ location.
