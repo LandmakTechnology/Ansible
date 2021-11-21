@@ -7,7 +7,7 @@
     - Facts and Local facts \
     - Registered variables
 
-# **Default variables**
+**Default variables**
     - inventory_hostname
     - inventory_hostname_short
     - groups/ groups.keys()
