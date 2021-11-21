@@ -1,5 +1,5 @@
-- Variables are used to store values. \
-- Ansible variable names should be letters, numbers, underscore and they should always start with a letter. \
+- Variables are used to store values.
+- Ansible variable names should be letters, numbers, underscore and they should always start with a letter.
 
 **Types of variables:** \
     - Default variables \
@@ -7,16 +7,16 @@
     - Facts and Local facts \
     - Registered variables
 
-# **Default variables** \
-    - inventory_hostname \
-    - inventory_hostname_short \
+# **Default variables**
+    - inventory_hostname
+    - inventory_hostname_short
     - groups/ groups.keys()
 
   **Debug module**
-- Executes only on the local host to display some information- message or variable value. We do not need ssh connectivity or password for a debug module.\
-- When using the debug module, the arguments will either be \
-    - msg  =  to display a message \
-    - var  = to display a variable \
+- Executes only on the local host to display some information- message or variable value. We do not need ssh connectivity or password for a debug module.
+- When using the debug module, the arguments will either be
+    - msg  =  to display a message
+    - var  = to display a variable
 
   **$ ansible all -m debug -a "var='This is a debug module'"** \
   **$ ansible all -m debug -a "msg={{}}"**
@@ -27,11 +27,11 @@
 $ ansible all -m debug -a "var='inventory_hostname'" \
 $ ansible all -m debug -a "msg={{inventory_hostname}}"
 
-- If you have an inventory with entries like 'server1.cloud.production.host' then the command below will return server1. \
+- If you have an inventory with entries like 'server1.cloud.production.host' then the command below will return server1.
 
   **$ ansible all -m debug -a "msg={{inventory_hostname_short}}"**
 
-**groups/groups.keys()**
+#**groups/groups.keys()**
 - You can list the hosts within a group \
  **$ ansible db --list-hosts**
 - To list all groups in the inventory, then we can use the debug module \
@@ -48,7 +48,7 @@ $ ansible all -m debug -a "msg={{inventory_hostname}}"
        [db]
        172.31.13.31  ansible_ssh_pass=ansible
 
-- You can also connect using a different user by specifying the user in the hosts file.\
+- You can also connect using a different user by specifying the user in the hosts file.
 #
      [db]
      172.31.13.31  ansible_ssh_user=sammy ansible_ssh_pass=abc123
@@ -56,7 +56,7 @@ $ ansible all -m debug -a "msg={{inventory_hostname}}"
 - Create a file on the managed nodes to see which user its working with. \
  **$ ansible all -m file -a "path=test.txt state=touch"**
 
-#**Group variables:** \
+#**Group variables:**
 #
      [db:vars]
      ansible_ssh_user=sammy
