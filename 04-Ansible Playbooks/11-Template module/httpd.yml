@@ -1,0 +1,18 @@
+# using .j2 files
+---
+ - hosts: web
+   become: yes
+   tasks:
+   - name: Install httpd
+     yum:
+       name: httpd
+       state: present
+   - template:
+       src: index.html.j2
+       dest: /usr/share/httpd/noindex/index.html
+   - name: Start httpd
+     service:
+       name: httpd
+       state: started
+
+# runs on port 80

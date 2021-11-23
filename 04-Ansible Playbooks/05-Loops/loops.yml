@@ -1,0 +1,14 @@
+---
+  - hosts: localhost
+    gather_facts: false
+    become: yes
+    tasks:
+      - yum:
+         name: "{{item}}"
+         state: present
+        loop:
+          - git
+          - wget
+          - pip3
+          - tree
+          - vim

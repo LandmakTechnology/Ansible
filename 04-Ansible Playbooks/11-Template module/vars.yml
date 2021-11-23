@@ -1,0 +1,17 @@
+---
+ - hosts: web
+   become: yes
+   vars:
+     http_port: 8000
+   tasks:
+   - name: Install httpd
+     yum:
+       name: httpd
+       state: present
+   - template:
+      src: index.html.j2
+      dest: /usr/share/httpd/noindex/index.html
+   - name: Start httpd
+     service:
+       name: httpd
+       state: started

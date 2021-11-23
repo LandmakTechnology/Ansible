@@ -102,8 +102,8 @@ a) From ansible control node to remote node \
           - inventory_hostname_short
           - groups/ groups.keys()
 
-  **$ ansible all -m debug -a "msg='This is a debug module'"** \
-  **$ ansible all -m debug -a "var={{}}"**
+  **$ ansible all -m debug -a "var='This is a debug module'"** \
+  **$ ansible all -m debug -a "msg={{}}"**
 
  **inventory_hostname**
   - You can use debug to display variables.

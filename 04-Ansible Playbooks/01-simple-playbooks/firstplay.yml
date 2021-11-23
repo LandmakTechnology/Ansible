@@ -1,0 +1,6 @@
+---
+ - hosts: web
+   tasks:
+   - debug:
+      msg: 'This is the day'
+   

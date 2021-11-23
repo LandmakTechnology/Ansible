@@ -1,0 +1,41 @@
+- hosts: jenkins_worker  
+  become: yes
+  become_user: root      
+  tasks:
+     - name: install wget
+       yum:
+         name: wget      
+         state: present
+
+     - name: install git
+       yum:
+          name: git
+          state: present
+
+     - name: install jenkins repo
+       command: wget -O /etc/yum.repos.d/jenkins.repo \ https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
+     - name: import jenkins key
+       command: rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+     - name: Install java
+       yum:
+          name: java-1.8.0-openjdk-devel
+          state: present
+
+     - name: Install jenkins
+       yum:
+         name: jenkins
+         state: present
+
+     - name: Change jenkins users shell
+       user:
+         name: jenkins
+         shell: /bin/bash
+
+
+     - name: start jenkins daemon
+       command: systemctl daemon-reload
+
+     - name: start jenkins
+       command: systemctl start jenkins

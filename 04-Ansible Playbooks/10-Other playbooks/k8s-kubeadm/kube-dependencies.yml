@@ -1,0 +1,66 @@
+- hosts: Kubernetes_Servers
+  become: yes
+  become_user: root
+  tasks:
+    - name: Update repo
+      command: sudo yum update -y
+
+    - name: Install wget
+      become_user: root
+      shell: yum install wget -y
+
+    #- name: configure docker repo
+     # command: wget https://yum.dockerproject.org/repo/main/centos/7/ >> /etc/yum.repos.d/docker.repo
+
+    - name: configure docker repo
+      get_url:
+        url: https://yum.dockerproject.org/repo/main/centos/7/
+        dest: /etc/yum.repos.d/docker.repo
+
+    - name: install Docker
+      yum:
+        name: docker-engine
+        state: present
+
+    - name: start and enable docker service
+      service:
+           name: docker
+           state: started
+           enabled: yes
+
+
+    - name: add Kubernetes' YUM repository
+      yum_repository:
+        name: Kubernetes
+        description: Kubernetes YUM repository
+        baseurl: https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+        gpgkey: https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+        gpgcheck: yes
+    - name: install kubelet
+      yum:
+        name: kubelet-1.20.4
+        state: present
+        update_cache: true
+
+    - name: Enable kubelet
+      command: sudo systemctl restart kubelet
+
+    - name: install kubeadm
+      yum:
+        name: kubeadm-1.20.4
+        state: present
+
+    - name: start kubelet
+      service:
+       name: kubelet
+       enabled: yes
+       state: started
+
+- hosts: Kubernetes_Master
+  become: yes
+  tasks:
+   - name: install kubectl
+     yum:
+        name: kubectl-1.20.4
+        state: present
+        allow_downgrade: yes

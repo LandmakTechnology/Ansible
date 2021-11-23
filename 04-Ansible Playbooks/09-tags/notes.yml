@@ -1,0 +1,14 @@
+a) How to run a tasks with required tags :
+ansible-playbook <your_yaml_file> --tags tag_1,tag_2
+
+
+b) How to skip a tasks with required tags :
+ansible-playbook <your_yaml_file> --skip-tags tag_1,tag_2
+
+c) How to list all tags :
+
+ansible-playbook <your_yaml_file> --list-tags
+
+Note: It wont display the tags of a task if one of the tag value is never
+-always = task will always be executed
+- never = task will never be executed
