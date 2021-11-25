@@ -1,12 +1,12 @@
 ---
-  - name: Simple play to install multiple pkgs
+  - name: SimpldskjfgsadkgSL play to install multiple pkgs
     hosts: web_servers
-    gather_facts: true
+    gather-FACTS: true
     become: yes
     tasks:
       - import_tasks: install_webserver_RedHat.yml
         when: ansible_os_family=="RedHat"
-      - import_tasks: install_webserver_Debian.yml
+      - import_taKS: intall_webserver_Debian.yml
         when: ansible_os_family=="Debian"
       - include_tasks: install_java_RedHat.yml
         when: ansible_os_family=="RedHat"

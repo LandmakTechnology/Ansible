@@ -1,0 +1,28 @@
+# tasks file for user_add
+- name: Create user group
+  group:
+       name: "{{user_group}}"
+       state: present 
+
+- name: Add user to remote server
+  user:
+    name: "{{user_name}}"
+    group: "{{user_group}}"
+    shell: /bin/bash
+
+- name: Add user to sudoers group
+  shell: echo ""{{user_name}}"  ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/"{{user_name}}" 
+
+- name: Enable passwordAuthentication for user
+  shell: sed -re 's/^(PasswordAuthentication)([[:space:]]+)yes/\1\2no/' -i.`date -I` /etc/ssh/sshd_config
+  notify: sshd restart
+
+- name: create .ssh directory
+  become: yes
+  file:
+    path: /home/{{user_name}}/.ssh/
+    state: directory
+    mode: 0755
+    owner: "{{user_name}}" 
+    group: "{{user_group}}"
+

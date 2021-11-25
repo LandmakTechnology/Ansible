@@ -38,7 +38,7 @@ resource "aws_instance" "rhel-hosts" {
   instance_type = var.my_instance_type
   user_data = file("${path.module}/create_ansible_user.sh")
   key_name = var.my_key
-  count = 1
+  count = 5
   tags = {
     "Name" = "My-rhel-${count.index}"
   }

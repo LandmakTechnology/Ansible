@@ -1,0 +1,8 @@
+# vars file for tomcat
+req_tomcat_ver: 9.0.55
+tomcat_url: http://mirrors.estointernet.in/apache/tomcat/tomcat-{{req_tomcat_ver.split('.')[0]}}/v{{req_tomcat_ver}}/bin/apache-tomcat-{{req_tomcat_ver}}.tar.gz
+tomcat_port: 8085
+tomcat_user: landmark
+tomcat_user_passwd: admin1234
+tomcat_role1: manager-gui
+tomcat_role2: manager-script

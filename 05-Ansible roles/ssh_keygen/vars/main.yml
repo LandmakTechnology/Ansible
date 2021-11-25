@@ -1,0 +1,6 @@
+---
+# vars file for ssh_keygen
+user_name: ansadmin
+user_group: ansible_group
+host1: jenkins_worker
+host2: tomcat_worker

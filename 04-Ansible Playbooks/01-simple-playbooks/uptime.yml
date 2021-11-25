@@ -1,10 +1,10 @@
 ---
  - name: How to use debug module
-   hosts: web
-   tasks: 
-   - name: capturing results
-     shell: /usr/bin/uptime
+   hosts: group1
+   tasks:
+   - name: Memory info
+     shell: df -h
      register: results
 
    - debug:
-      var: results
+     var: results

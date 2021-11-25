@@ -1,7 +1,8 @@
 ---
- - hosts: all
+ - hosts: group1
+   gather_facts: true
    tasks:
-   - debug:  
+   - debug:
       msg:
        - "The os distribution is: {{ansible_distribution}}"
        - "THe os name is: {{ansible_system}}"

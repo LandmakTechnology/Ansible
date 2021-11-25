@@ -1,0 +1,4 @@
+# handlers file for tomcat
+- name: start_tomcat
+  shell:  nohup /usr/local/latest/bin/startup.sh & 
+

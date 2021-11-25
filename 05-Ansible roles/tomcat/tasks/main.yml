@@ -1,0 +1,41 @@
+# tasks file for tomcat 
+- name: Downloading required tomcat
+  get_url:
+     url: "{{tomcat_url}}"
+     dest: /usr/local
+      
+- name: Extracting downloaded tomcat
+  unarchive:
+    src: "/usr/local/apache-tomcat-{{req_tomcat_ver}}.tar.gz"
+    dest: /usr/local
+    remote_src: yes
+
+- name: Renaming tomcat home
+  command: mv /usr/local/apache-tomcat-{{req_tomcat_ver}} /usr/local/latest
+  tags:
+  - xyz
+  
+- name: Configuring tomcat user credentials and roles
+  template:
+    src: tomcat-users.xml.j2
+    dest: /usr/local/latest/conf/tomcat-users.xml
+
+- name: Authenticating with manager
+  template:
+    src: context.xml.j2
+    dest: /usr/local/latest/webapps/manager/META-INF/context.xml
+
+- name: Replacing default port with required port
+  template:
+    src: server.xml.j2
+    dest: /usr/local/latest/conf/server.xml
+  notify: start_tomcat
+
+- name: Copy public key
+  become: yes
+  copy:
+    src: /home/ec2-user/.ssh/authorized_keys
+    dest: /home/ansible/
+    owner: ansible
+    group: ansible
+    remote_src: yes 

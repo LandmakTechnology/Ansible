@@ -1,6 +1,6 @@
 ---
   - name: Simple play to install httpd or apache2
-    hosts: web_servers
+    hosts: group1
     gather_facts: true
     become: yes
     tasks:
@@ -9,7 +9,7 @@
         name: httpd
         state: present
       when: ansible_distribution != "Ubuntu"
-    - name: Istalling apache2 using apt
+    - name: Installing apache2 using apt
       apt:
         name: apache2
         state: present

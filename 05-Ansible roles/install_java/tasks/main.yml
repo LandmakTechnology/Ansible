@@ -1,0 +1,11 @@
+# tasks file for install_java
+- name: Installing required java
+  yum:
+    name: "{{req_java}}"
+    state: present
+
+- name: Setting default java
+  alternatives:
+    name: java
+    link: /usr/bin/java
+    path: /usr/lib/jvm/{{set_java}}/bin/java

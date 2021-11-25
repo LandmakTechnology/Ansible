@@ -1,8 +1,7 @@
 ---
-  - hosts: localhost
-    gather_facts: false
-    become: yes
-    tasks:
+ - hosts: group1
+   become: yes
+   tasks:
       - yum:
          name: git
          state: present
