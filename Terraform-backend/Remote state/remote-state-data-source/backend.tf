@@ -48,5 +48,5 @@ resource "aws_dynamodb_table" "tf_lock" {
  # Provider Block
 provider "aws" {
    region  = "us-west-1"
-   profile = "Kenmak"
+   profile = "Landmark"
  }
