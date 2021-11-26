@@ -8,7 +8,7 @@ terraform {
   }
 }
 
-/*  backend "s3" {
+backend "s3" {
     bucket = "my-terraformstate-landmark-buc"
     key = "terraform/terraform.tfstate"
     dynamodb_table = "terraform-lock"
@@ -16,9 +16,9 @@ terraform {
     region = "us-west-1"
 
  }
-}*/
+}
 
-/*resource "aws_s3_bucket" "my_bucket" {
+resource "aws_s3_bucket" "my_bucket" {
   bucket = "my-terraformstate-landmark-buc"
   acl    = "private"
 
@@ -30,9 +30,9 @@ terraform {
     Name        = "My terraform-bucket"
     Environment = "Dev"
   }
-}*/
+}
 
-/*resource "aws_dynamodb_table" "tf_lock" {
+resource "aws_dynamodb_table" "tf_lock" {
   name = "terraform-lock"
   hash_key = "LockID"
   read_capacity = 3
@@ -44,10 +44,10 @@ terraform {
   tags = {
     Name = "Terraform Lock Table"
    }
- }*/
+ }
 
  # Provider Block
 provider "aws" {
    region  = "us-west-1"
-   profile = "Kenmak"
+   profile = "Landmark"
  }
